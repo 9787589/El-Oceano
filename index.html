@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Océano — una experiencia interactiva para descubrir la vida, las profundidades y los misterios del planeta azul.">
+  <title>OCÉANO — El planeta azul</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <div class="reading-progress" id="readingProgress" role="progressbar" aria-label="Progreso de lectura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="readingProgressBar"></span></div>
+  <div id="loader"><div class="loader-mark">OCÉANO<span>.</span></div><div class="loader-line"><i></i></div></div>
+
+  <div class="cursor-glow"></div>
+  <canvas id="oceanCanvas"></canvas>
+  <div class="grain"></div>
+
+  <header class="nav">
+    <a class="logo" href="#inicio">OCÉANO<span>.</span></a>
+    <nav id="site-nav" aria-label="Navegación principal">
+      <a href="#mundo">El océano</a>
+      <a href="#vida">Vida marina</a>
+      <a href="#profundidad">Profundidades</a>
+      <a href="#descenso">Descenso</a>
+      <a href="#corrientes">Corrientes</a>
+      <a href="#oceanos">Océanos</a>
+      <a href="#conservacion">Conservación</a>
+      <a href="#futuro">Futuro</a>
+    </nav>
+    <a class="nav-pill" href="#explorar">Explorar <span>↗</span></a>
+    <button class="menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-nav">☰</button>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero" id="inicio">
+      <div class="hero-image"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <div class="eyebrow"><span class="dot"></span> UNA INMERSIÓN EN EL PLANETA AZUL</div>
+        <h1>El mundo<br><em>comienza</em> aquí.</h1>
+        <p class="hero-copy">Más allá de la costa existe un universo que cubre la mayor parte de nuestro planeta. Descubre sus criaturas, sus zonas inexploradas y la historia que el océano todavía guarda.</p>
+        <div class="hero-actions">
+          <a href="#explorar" class="btn-primary">Comenzar exploración <span>↓</span></a>
+          <button class="play-btn" id="soundBtn" type="button" aria-controls="oceanAudio" aria-pressed="false"><span aria-hidden="true">◉</span><span id="soundLabel">Escuchar oleaje suave</span></button>
+        </div>
+      </div>
+      <div class="scroll-hint"><span></span> DESLIZA PARA DESCUBRIR</div>
+      <div class="hero-side">07° 23' 14" S<br>—<br>PARA EL PLANETA</div>
+    </section>
+
+    <section class="intro section" id="mundo">
+      <div class="section-number">01 / 11</div>
+      <div class="intro-grid">
+        <div>
+          <p class="kicker">UNA DIMENSIÓN AZUL</p>
+          <h2>No es solo agua.<br><span>Es un mundo.</span></h2>
+        </div>
+        <div class="intro-text">
+          <p>El océano es el sistema natural más grande de la Tierra. Regula el clima, almacena calor, produce una enorme cantidad del oxígeno que respiramos y conecta ecosistemas que se extienden desde las costas hasta las zonas más profundas del planeta.</p>
+          <p>Y, sin embargo, gran parte de él continúa siendo desconocida. Bajo la superficie existe un paisaje de montañas, cañones, volcanes y llanuras donde la vida ha desarrollado formas extraordinarias de sobrevivir.</p>
+          <a class="text-link" href="#profundidad">Descender a las profundidades <span>→</span></a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong data-count="70">0</strong><span>% de la superficie terrestre</span><a class="stat-source" href="https://oceanservice.noaa.gov/facts/oceanwater.html" target="_blank" rel="noopener noreferrer">Fuente: NOAA</a></div>
+        <div class="stat"><strong>10.935</strong><span>m — profundidad máxima medida</span><a class="stat-source" href="https://oceanexplorer.noaa.gov/ocean-fact/ocean-depth/" target="_blank" rel="noopener noreferrer">Fuente: NOAA</a></div>
+        <div class="stat"><strong>&lt;0,001%</strong><span>del fondo profundo ha sido observado</span><a class="stat-source" href="https://oceanexplorer.noaa.gov/facts/explored.html" target="_blank" rel="noopener noreferrer">Fuente: NOAA</a></div>
+        <div class="stat"><strong>3.682 m</strong><span>profundidad media estimada</span><a class="stat-source" href="https://oceanexplorer.noaa.gov/ocean-fact/ocean-depth/" target="_blank" rel="noopener noreferrer">Fuente: NOAA</a></div>
+      </div>
+    </section>
+
+    <section class="marquee" aria-label="Un solo planeta azul">
+      <p class="marquee-caption"><span></span> UNA SOLA RED OCEÁNICA <span></span> VIVA Y EN MOVIMIENTO</p>
+      <div class="marquee-track" aria-hidden="true">
+        <span>THE BLUE PLANET <i>·</i> THE BLUE PLANET <i>·</i> THE BLUE PLANET <i>·</i></span>
+        <span>THE BLUE PLANET <i>·</i> THE BLUE PLANET <i>·</i> THE BLUE PLANET <i>·</i></span>
+      </div>
+    </section>
+
+    <section class="life section" id="vida">
+      <div class="section-head">
+        <div><p class="kicker">02 / 11 · VIDA MARINA</p><h2>Millones de formas<br><span>de estar vivo.</span></h2></div>
+        <p>Desde organismos microscópicos hasta gigantes que recorren miles de kilómetros, la vida marina ha encontrado una solución para casi cualquier condición imaginable.</p>
+      </div>
+
+      <div class="creature-grid">
+        <article class="creature-card large" data-tilt>
+          <img loading="lazy" decoding="async" src="https://media.fisheries.noaa.gov/styles/media_750_x500/s3/dam-migration/2048x1365-greenturtle-swfsc-mmtd-ralphpace.jpg?itok=1bsd2MzH" alt="Tortuga marina">
+          <div class="card-shade"></div>
+          <div class="card-content"><span>01 — REPTILES · NOAA</span><h3>Tortuga<br>marina</h3><p>Viajeras ancestrales capaces de recorrer enormes distancias entre océanos.</p></div>
+        </article>
+        <article class="creature-card" data-tilt>
+          <img loading="lazy" decoding="async" src="https://cf-images.us-east-1.prod.boltdns.net/v1/static/659677166001/07c513a7-e2bf-4284-8f3e-7aa250020759/2d631d0d-d0d6-4ccd-af5a-0331f41cb8b5/1280x720/match/image.jpg" alt="Ballena en el océano">
+          <div class="card-shade"></div>
+          <div class="card-content"><span>02 — MAMÍFEROS · NOAA</span><h3>Ballena<br>jorobada</h3><p>Una de las criaturas más grandes del planeta.</p></div>
+        </article>
+        <article class="creature-card" data-tilt>
+          <img loading="lazy" decoding="async" src="biodiversidad.jpg" alt="Arrecife de coral con peces tropicales">
+          <div class="card-shade"></div>
+          <div class="card-content"><span>03 — ECOSISTEMAS · ARRECIFE</span><h3>Arrecifes<br>de coral</h3><p>Ciudades submarinas llenas de color y biodiversidad.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="depth section" id="profundidad">
+      <div class="depth-bg"></div><div class="depth-photo"><img loading="lazy" decoding="async" src="https://commons.wikimedia.org/wiki/Special:FilePath/Atolla_wyvillei_%28Operation_Deep_Scope_2004%29.jpg?width=1400" alt="Vida en las profundidades del océano"></div>
+      <div class="section-number">03 / 11</div>
+      <div class="depth-intro">
+        <p class="kicker">DESCENSO VERTICAL</p>
+        <h2>Cuanto más<br><em>profundo</em>, más extraño.</h2>
+        <p>La luz desaparece, la presión aumenta y las reglas de supervivencia cambian. El océano está dividido en zonas, cada una con condiciones y formas de vida únicas.</p>
+      </div>
+      <div class="zones">
+        <button class="zone active" type="button" data-zone="0" aria-pressed="true"><b>01</b><span><strong>Epipelágica</strong><small>0 — 200 m · Zona iluminada</small></span><span aria-hidden="true">→</span></button>
+        <button class="zone" type="button" data-zone="1" aria-pressed="false"><b>02</b><span><strong>Mesopelágica</strong><small>200 — 1.000 m · Zona crepuscular</small></span><span aria-hidden="true">→</span></button>
+        <button class="zone" type="button" data-zone="2" aria-pressed="false"><b>03</b><span><strong>Batipelágica</strong><small>1.000 — 4.000 m · Oscuridad total</small></span><span aria-hidden="true">→</span></button>
+        <button class="zone" type="button" data-zone="3" aria-pressed="false"><b>04</b><span><strong>Abisopelágica</strong><small>4.000 — 6.000 m · Llanuras abisales</small></span><span aria-hidden="true">→</span></button>
+        <button class="zone" type="button" data-zone="4" aria-pressed="false"><b>05</b><span><strong>Hadopelágica</strong><small>6.000+ m · Las fosas oceánicas</small></span><span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="facts section" id="explorar">
+      <div class="section-head">
+        <div><p class="kicker">04 / 11 · DATOS QUE SORPRENDEN</p><h2>El océano está<br><span>lleno de secretos.</span></h2></div>
+      </div>
+      <div class="fact-grid">
+        <article><img loading="lazy" decoding="async" src="https://commons.wikimedia.org/wiki/Special:FilePath/Atolla_wyvillei_2.jpg?width=1200" alt="Medusa de aguas profundas"><span>01</span><strong>El sonido viaja lejos</strong><p>En el agua, el sonido viaja más rápido que en el aire y puede recorrer grandes distancias según la temperatura y la presión.</p><a class="fact-source" href="https://oceanservice.noaa.gov/facts/sound.html" target="_blank" rel="noopener noreferrer">NOAA · Sonido oceánico ↗</a></article>
+        <article><img loading="lazy" decoding="async" src="https://commons.wikimedia.org/wiki/Special:FilePath/Blacksmoker_in_Atlantic_Ocean.jpg?width=1200" alt="Fuente hidrotermal submarina"><span>02</span><strong>Hay montañas</strong><p>La dorsal meso-oceánica es la cadena montañosa más extensa de la Tierra: recorre cerca de 65.000 kilómetros.</p><a class="fact-source" href="https://oceanexplorer.noaa.gov/ocean-fact/mid-ocean-ridge/" target="_blank" rel="noopener noreferrer">NOAA · Dorsal oceánica ↗</a></article>
+        <article><img loading="lazy" decoding="async" src="https://commons.wikimedia.org/wiki/Special:FilePath/Atolla_wyvillei_%28Operation_Deep_Scope_2004%29.jpg?width=1200" alt="Medusa de aguas profundas y bioluminiscencia"><span>03</span><strong>La vida brilla</strong><p>Entre 200 y 1.000 metros, cerca del 80% de los animales pelágicos estudiados produce luz propia.</p><a class="fact-source" href="https://oceanexplorer.noaa.gov/ocean-fact/bioluminescence/" target="_blank" rel="noopener noreferrer">NOAA · Bioluminiscencia ↗</a></article>
+        <article><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=78" alt="Ecosistema submarino"><span>04</span><strong>Respiramos océano</strong><p>El océano produce aproximadamente la mitad del oxígeno global; el plancton fotosintético aporta gran parte.</p><a class="fact-source" href="https://oceanservice.noaa.gov/facts/ocean-oxygen.html" target="_blank" rel="noopener noreferrer">NOAA · Oxígeno del océano ↗</a></article>
+      </div>
+    </section>
+
+
+    <section class="descent section" id="descenso">
+      <div class="descent-heading">
+        <div>
+          <p class="kicker">05 / 11 · DESCENSO INTERACTIVO</p>
+          <h2>Explora cada<br><span>capa del océano.</span></h2>
+        </div>
+        <p>La luz, el color y la vida cambian a medida que descendemos. Recorre desde la superficie hasta las fosas oceánicas.</p>
+      </div>
+      <div class="descent-console">
+        <div class="descent-control">
+          <label for="depthControl">PROFUNDIDAD</label>
+          <output id="depthValue" for="depthControl" aria-live="polite">0 m</output>
+          <input id="depthControl" type="range" min="0" max="11000" step="100" value="0" aria-label="Profundidad en metros">
+          <span id="depthZone">Zona epipelágica</span>
+        </div>
+        <div class="descent-scene" id="descentScene" aria-hidden="true">
+          <div class="descent-rays"></div>
+          <div class="descent-sunlight"></div>
+          <div class="descent-spotlight"></div>
+          <div class="descent-creature"></div>
+          <div class="descent-submersible"><span></span></div>
+          <div class="descent-current"></div>
+          <div class="descent-seafloor"></div>
+          <span class="descent-mark descent-mark-top">SUPERFICIE</span>
+          <span class="descent-mark descent-mark-bottom">11.000 M</span>
+        </div>
+        <p class="descent-description" id="depthDescription" aria-live="polite">Luz solar y aguas cálidas: la zona donde comienza la mayor parte de la vida marina.</p>
+      </div>
+    </section>
+
+    <section class="ocean-topics section" id="temas">
+      <div class="section-head">
+        <div><p class="kicker">06 / 11 · EL PLANETA AZUL</p><h2>Mucho más que<br><span>agua salada.</span></h2></div>
+        <p>El océano funciona como una enorme red conectada. Sus corrientes, ecosistemas y organismos participan en procesos que afectan al clima, la alimentación y la vida de todo el planeta.</p>
+      </div>
+
+      <div class="topic-grid">
+        <article class="topic-card">
+          <img loading="lazy" decoding="async" class="topic-image" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=78" alt="Océano y clima">
+          <div class="topic-icon">◎</div>
+          <h3>Clima y temperatura</h3>
+          <p>El océano absorbe y redistribuye una enorme cantidad de energía. Sus corrientes transportan calor entre regiones y ayudan a moderar las temperaturas del planeta.</p>
+        </article>
+        <article class="topic-card">
+          <img loading="lazy" decoding="async" class="topic-image" src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=1200&q=78" alt="Vida microscópica y ecosistema marino">
+          <div class="topic-icon">◌</div>
+          <h3>Oxígeno y fitoplancton</h3>
+          <p>El fitoplancton realiza fotosíntesis y forma parte de la base de muchas cadenas alimentarias marinas. Su actividad conecta la superficie del océano con el ciclo global del carbono.</p>
+        </article>
+        <article class="topic-card">
+          <img loading="lazy" decoding="async" class="topic-image" src="corrientes%20marinas.jpg" alt="Corrientes marinas">
+          <div class="topic-icon">⌁</div>
+          <h3>Corrientes marinas</h3>
+          <p>Las corrientes son movimientos continuos del agua impulsados por el viento, diferencias de temperatura y salinidad, mareas y la rotación terrestre.</p>
+        </article>
+        <article class="topic-card">
+          <img loading="lazy" decoding="async" class="topic-image" src="carbono.jpg" alt="Manglar y carbono azul">
+          <div class="topic-icon">✦</div>
+          <h3>Carbono azul</h3>
+          <p>Manglares, marismas y praderas marinas pueden almacenar carbono en sus plantas y sedimentos, convirtiéndose en ecosistemas relevantes para el equilibrio climático.</p>
+        </article>
+      </div>
+
+      <div class="current-feature" id="corrientes">
+        <div class="current-copy">
+          <p class="kicker">CORRIENTES OCEÁNICAS</p>
+          <h3>El agua también<br><em>viaja alrededor del planeta.</em></h3>
+          <p>Las corrientes redistribuyen calor y nutrientes a escala planetaria. Esta visualización de NASA muestra patrones de circulación oceánica y la velocidad relativa del flujo.</p>
+        </div>
+        <div class="current-map" id="currentMap" data-current="global">
+          <img loading="lazy" decoding="async" src="corrientes%20marinas.jpg" alt="Mapa mundial de corrientes oceánicas">
+          <svg class="current-routes" viewBox="0 0 1200 675" preserveAspectRatio="none" role="group" aria-label="Selecciona una ruta de corriente">
+            <g class="current-route-group" data-route="atlantic" data-current="atlantic" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar la corriente del Golfo">
+              <path class="current-route" d="M 290 345 C 330 330 330 270 370 235 C 405 205 440 245 480 225 C 525 202 555 185 600 190 C 650 196 675 220 715 210" />
+              <path class="current-route-flow" d="M 290 345 C 330 330 330 270 370 235 C 405 205 440 245 480 225 C 525 202 555 185 600 190 C 650 196 675 220 715 210" />
+            </g>
+            <g class="current-route-group" data-route="pacific" data-current="pacific" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar la corriente de Kuroshio">
+              <path class="current-route" d="M 1040 315 C 1090 285 1100 245 1150 230 C 1090 215 1040 235 1000 265 C 960 295 930 320 900 330" />
+              <path class="current-route-flow" d="M 1040 315 C 1090 285 1100 245 1150 230 C 1090 215 1040 235 1000 265 C 960 295 930 320 900 330" />
+            </g>
+            <g class="current-route-group" data-route="southern" data-current="southern" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar la corriente Circumpolar Antártica">
+              <path class="current-route" d="M 20 595 C 220 580 380 615 590 595 C 800 575 990 610 1180 588" />
+              <path class="current-route-flow" d="M 20 595 C 220 580 380 615 590 595 C 800 575 990 610 1180 588" />
+            </g>
+          </svg>
+          <span>MAPA ESQUEMÁTICO · RUTAS SIMPLIFICADAS</span>
+        </div>
+        <div class="current-controls" role="group" aria-label="Explorar corrientes por región">
+          <button class="current-choice is-active" type="button" data-current="global" aria-pressed="true">Global</button>
+          <button class="current-choice" type="button" data-current="atlantic" aria-pressed="false">Atlántico</button>
+          <button class="current-choice" type="button" data-current="pacific" aria-pressed="false">Pacífico</button>
+          <button class="current-choice" type="button" data-current="southern" aria-pressed="false">Antártica</button>
+        </div>
+        <p class="current-description" id="currentDescription" aria-live="polite">Las corrientes superficiales responden al viento; las profundas, a diferencias de temperatura y salinidad.</p>
+        <div class="current-details" aria-live="polite">
+          <h4 id="currentName">Circulación global</h4>
+          <div><span>RECORRIDO</span><p id="currentRoute">Red global de corrientes superficiales y profundas.</p></div>
+          <div><span>EFECTO</span><p id="currentEffect">Redistribuye calor, nutrientes y carbono entre regiones.</p></div>
+          <a id="currentSource" href="https://www.noaa.gov/education/resource-collections/ocean-coasts/ocean-currents" target="_blank" rel="noopener noreferrer">NOAA · Corrientes oceánicas ↗</a>
+        </div>
+      </div>
+
+      <div class="ocean-image-strip">
+        <div class="ocean-image-main">
+          <img loading="lazy" decoding="async" src="https://cdn.oceanservice.noaa.gov/oceanserviceprod/annualreport/2023/bakersIsland-coralreef-960.jpg" alt="Arrecife de coral">
+          <div class="image-caption">ECOSISTEMAS · ARRECIFES DE CORAL</div>
+        </div>
+        <div class="ocean-image-side">
+          <img loading="lazy" decoding="async" src="biodiversidad.jpg" alt="Vida marina bajo el agua">
+          <div class="image-caption">BIODIVERSIDAD · VIDA SUBMARINA</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="oceans-map section" id="oceanos">
+      <div class="section-head">
+        <div><p class="kicker">07 / 11 · LOS CINCO OCÉANOS</p><h2>Un planeta,<br><span>cinco grandes mundos.</span></h2></div>
+        <p>Cada océano posee características geográficas, climáticas y ecológicas diferentes. Juntos forman un sistema global conectado.</p>
+      </div>
+      <div class="ocean-list">
+        <article><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=78" alt="Océano Pacífico"><span>01</span><div><h3>Pacífico</h3><p>Es el mayor de los cinco océanos y contiene algunas de las fosas y regiones volcánicas submarinas más profundas del planeta.</p></div><b>≈ 165 M km²</b></article>
+        <article><img loading="lazy" decoding="async" src="oceanoatlantico.jpg" alt="Océano Atlántico"><span>02</span><div><h3>Atlántico</h3><p>Separa América de Europa y África. La dorsal mesoatlántica atraviesa su fondo oceánico.</p></div><b>≈ 106 M km²</b></article>
+        <article><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=700&q=78" alt="Océano Índico"><span>03</span><div><h3>Índico</h3><p>Rodeado por África, Asia y Australia, está muy relacionado con los sistemas de monzones del sur de Asia.</p></div><b>≈ 70 M km²</b></article>
+        <article><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1517783999520-f068d7431a60?auto=format&fit=crop&w=700&q=78" alt="Océano Antártico"><span>04</span><div><h3>Antártico</h3><p>Rodea la Antártida y está dominado por la poderosa Corriente Circumpolar Antártica.</p></div><b>≈ 20 M km²</b></article>
+        <article><img loading="lazy" decoding="async" src="artico.jpg" alt="Océano Ártico"><span>05</span><div><h3>Ártico</h3><p>Es el océano más pequeño y está parcialmente cubierto por hielo marino cuya extensión cambia con las estaciones.</p></div><b>≈ 14 M km²</b></article>
+      </div>
+    </section>
+
+    <section class="exploration section">
+      <div class="exploration-visual">
+        <img loading="lazy" decoding="async" src="https://nmsflowergarden.blob.core.windows.net/flowergarden-prod/media/archive/img/socialmedia/072924mohawkrov_nmsf_uncwuvp1000.jpg" alt="Exploración submarina">
+        <div class="visual-label">EXPLORACIÓN · 01</div>
+      </div>
+      <div class="exploration-copy">
+        <p class="kicker">08 / 11 · EXPLORAR LO DESCONOCIDO</p>
+        <h2>La tecnología<br>nos permite<br><em>descender.</em></h2>
+        <p>Los investigadores utilizan vehículos operados remotamente, submarinos tripulados, sensores, satélites y sistemas de sonar para estudiar lugares donde la presión, la oscuridad y la temperatura dificultan la presencia humana.</p>
+        <div class="tech-list">
+          <div><b>ROV</b><span>Vehículos controlados desde la superficie.</span></div>
+          <div><b>AUV</b><span>Vehículos autónomos que recopilan datos.</span></div>
+          <div><b>SONAR</b><span>Permite estudiar el relieve bajo el agua mediante ondas acústicas.</span></div>
+          <div><b>SATÉLITES</b><span>Observan temperatura, nivel del mar y otros cambios a escala global.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="marine-gallery section">
+      <div class="section-head">
+        <div><p class="kicker">09 / 11 · GALERÍA</p><h2>Un vistazo a<br><span>la vida azul.</span></h2></div>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item tall"><img loading="lazy" decoding="async" src="https://cf-images.us-east-1.prod.boltdns.net/v1/static/659677166001/07c513a7-e2bf-4284-8f3e-7aa250020759/2d631d0d-d0d6-4ccd-af5a-0331f41cb8b5/1280x720/match/image.jpg" alt="Ballena jorobada"><figcaption>Ballena jorobada</figcaption></figure>
+        <figure class="gallery-item"><img loading="lazy" decoding="async" src="https://media.fisheries.noaa.gov/styles/media_750_x500/s3/dam-migration/2048x1365-greenturtle-swfsc-mmtd-ralphpace.jpg?itok=1bsd2MzH" alt="Tortuga marina"><figcaption>Tortuga marina</figcaption></figure>
+        <figure class="gallery-item"><img loading="lazy" decoding="async" src="ecosistemamarinoo.jpg" alt="Ecosistema submarino"><figcaption>Vida submarina</figcaption></figure>
+        <figure class="gallery-item wide"><img loading="lazy" decoding="async" src="https://cdn.oceanservice.noaa.gov/oceanserviceprod/annualreport/2023/bakersIsland-coralreef-960.jpg" alt="Arrecife de coral"><figcaption>Arrecife de coral</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="threat section" id="conservacion">
+      <div class="threat-image"></div>
+      <div class="threat-content">
+        <p class="kicker">10 / 11 · UN FUTURO QUE DEPENDE DE NOSOTROS</p>
+        <h2>Lo que ocurre<br><em>arriba</em>, llega abajo.</h2>
+        <p>El océano absorbe gran parte del exceso de calor del sistema climático y recibe las consecuencias de actividades humanas como la contaminación, la sobrepesca y las emisiones de gases de efecto invernadero.</p>
+        <div class="threat-bars">
+          <div><span>Calentamiento oceánico</span><i><b style="width:82%"></b></i></div>
+          <div><span>Contaminación por plásticos</span><i><b style="width:68%"></b></i></div>
+          <div><span>Pérdida de biodiversidad</span><i><b style="width:57%"></b></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="future section" id="futuro">
+      <div class="section-number">11 / 11</div>
+      <div class="future-copy">
+        <p class="kicker">UNA INVITACIÓN</p>
+        <h2>Conocer es<br>el primer paso<br><span>para proteger.</span></h2>
+        <p>El océano no necesita que lo admiremos desde lejos. Necesita que entendamos cómo funciona, por qué importa y qué decisiones pueden ayudar a conservarlo.</p>
+        <a class="btn-primary" href="#inicio">Volver a la superficie ↑</a>
+      </div>
+      <div class="orb-wrap"><div class="orb"></div><div class="orb-ring r1"></div><div class="orb-ring r2"></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">OCÉANO<span>.</span></div>
+    <p>Una experiencia digital sobre el planeta azul.</p>
+    <div class="audio-credit">Oleaje ligero · Andrew Migneault · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Lake_Okeechobee_Surf_in_April_2016.ogg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></div>
+    <div>© 2026 · EXPLORA · APRENDE · PROTEGE</div>
+  </footer>
+  <audio id="oceanAudio" preload="none" loop>
+    <source src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Lake_Okeechobee_Surf_in_April_2016.ogg" type="audio/ogg">
+  </audio>
+  <script src="script.js"></script>
+</body>
+</html>
