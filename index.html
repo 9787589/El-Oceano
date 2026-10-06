@@ -30,6 +30,7 @@
       <a href="#oceanos">Océanos</a>
       <a href="#conservacion">Conservación</a>
       <a href="#futuro">Futuro</a>
+      <a href="#contacto">Contacto</a>
     </nav>
     <a class="nav-pill" href="#explorar">Explorar <span>↗</span></a>
     <button class="menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-nav">☰</button>
@@ -37,6 +38,9 @@
 
   <main id="main-content" tabindex="-1">
     <section class="hero" id="inicio">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="ocean-waves-poster.jpg" aria-hidden="true" tabindex="-1">
+        <source src="ocean-waves.mp4" type="video/mp4">
+      </video>
       <div class="hero-image"></div>
       <div class="hero-overlay"></div>
       <div class="hero-content reveal">
@@ -318,6 +322,35 @@
       </div>
       <div class="orb-wrap"><div class="orb"></div><div class="orb-ring r1"></div><div class="orb-ring r2"></div></div>
     </section>
+
+    <section class="contact section" id="contacto" aria-labelledby="contact-title">
+      <div class="contact-intro">
+        <p class="kicker">SIGAMOS LA CONVERSACIÓN</p>
+        <h2 id="contact-title">¿Hablamos del<br><span>océano?</span></h2>
+        <p>¿Tenés una pregunta, una idea o querés compartir algo sobre este proyecto? Escribime y seguimos explorando.</p>
+        <a class="contact-email" href="mailto:rodrigoirala7@icloud.com">rodrigoirala7@icloud.com <span>↗</span></a>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="contact-fields">
+          <label>
+            Tu nombre
+            <input type="text" name="name" autocomplete="name" placeholder="¿Cómo te llamás?" required>
+          </label>
+          <label>
+            Tu correo
+            <input type="email" name="email" autocomplete="email" placeholder="vos@ejemplo.com" required>
+          </label>
+          <label class="contact-message">
+            Tu mensaje
+            <textarea name="message" rows="5" placeholder="Contame..." required></textarea>
+          </label>
+        </div>
+        <div class="contact-submit">
+          <button class="btn-primary" type="submit">Preparar mensaje <span>↗</span></button>
+          <p id="contactStatus" role="status" aria-live="polite">Se abrirá tu aplicación de correo para que puedas enviarlo.</p>
+        </div>
+      </form>
+    </section>
   </main>
 
   <footer>
@@ -325,6 +358,7 @@
     <p>Una experiencia digital sobre el planeta azul.</p>
     <p>Hecho por Rodrigo Irala (Choco)</p>
     <div class="audio-credit">Oleaje ligero · Andrew Migneault · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Lake_Okeechobee_Surf_in_April_2016.ogg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></div>
+    <div class="audio-credit">Video de portada · <a href="https://www.pexels.com/video/waves-of-the-ocean-9620654/" target="_blank" rel="noopener noreferrer">Pexels</a></div>
     <div>© 2026 · EXPLORA · APRENDE · PROTEGE</div>
   </footer>
   <audio id="oceanAudio" preload="none" loop>

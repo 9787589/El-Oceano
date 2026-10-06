@@ -1,6 +1,8 @@
 const loader=document.getElementById("loader");
 window.addEventListener("load",()=>setTimeout(()=>{loader.style.opacity="0";loader.style.visibility="hidden"},1550));
 const prefersReducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const heroVideo=document.getElementById("heroVideo");
+if(prefersReducedMotion)heroVideo.pause();
 
 const glow=document.querySelector(".cursor-glow");
 let mx=innerWidth/2,my=innerHeight/2,gx=mx,gy=my;
@@ -34,6 +36,19 @@ zones.forEach(zone=>zone.addEventListener("click",()=>{
 const menuButton=document.querySelector(".menu"),siteNav=document.getElementById("site-nav");
 menuButton.addEventListener("click",()=>{const isOpen=menuButton.getAttribute("aria-expanded")==="true";menuButton.setAttribute("aria-expanded",String(!isOpen));menuButton.setAttribute("aria-label",isOpen?"Abrir menú":"Cerrar menú");siteNav.classList.toggle("is-open",!isOpen)});
 siteNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{menuButton.setAttribute("aria-expanded","false");menuButton.setAttribute("aria-label","Abrir menú");siteNav.classList.remove("is-open")}));
+
+const contactForm=document.getElementById("contactForm");
+contactForm.addEventListener("submit",event=>{
+	event.preventDefault();
+	const formData=new FormData(contactForm);
+	const name=formData.get("name").trim();
+	const email=formData.get("email").trim();
+	const message=formData.get("message").trim();
+	const subject=encodeURIComponent(`Mensaje desde Océano — ${name}`);
+	const body=encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\n\n${message}`);
+	document.getElementById("contactStatus").textContent="Se abrió tu aplicación de correo con el mensaje listo para enviar.";
+	window.location.href=`mailto:rodrigoirala7@icloud.com?subject=${subject}&body=${body}`;
+});
 
 const depthControl=document.getElementById("depthControl");
 if(depthControl){
